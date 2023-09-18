@@ -29,10 +29,10 @@ def kelvin_para_celsius(kelvin):
     celsius = kelvin - 273.15
     return round(celsius,2)
 
-def func_clima(cidade, pais):
+def func_clima(cidade):
     api_key = func_api_key()
     response = requests.get(
-        f"https://api.openweathermap.org/data/2.5/weather?q={cidade},{pais}&appid={api_key}"
+        f"https://api.openweathermap.org/data/2.5/weather?q={cidade},br&appid={api_key}"
     )
     data = response.json()
     print(f"""
