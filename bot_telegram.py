@@ -1,15 +1,17 @@
 import telebot
 from functions import func_cep
 from functions import func_ip
-from conectores import mostra_token
+from functions import func_clima
+from cred import mostra_token
 
 bot = telebot.TeleBot(mostra_token())
 
-@bot.message_handler(commands=['relatoriopdf'])
-def resposta_pdf(mensagem):
-    file_path = 'teste.pdf'
-    with open(file_path, 'rb') as pdf_file:
-        bot.send_document(mensagem.chat.id, pdf_file)
+
+@bot.message_handler(commands=['clima'])
+def resposta_cep(mensagem):
+    cidade = bot.send_message(mensagem.chat.id, 'INFORME SUA CIDADE: ')
+    #informacoes = func_clima(fun_c())
+    bot.send_message(mensagem.chat.id, dados)
 
 @bot.message_handler(commands=['mylocation'])
 def resposta_cep(mensagem):
@@ -27,6 +29,7 @@ def resposta_ip(mensagem):
     mensage_return = 'Pressione /init\npara voltar pro menu'
     bot.send_message(mensagem.chat.id, texto_ip)
     bot.send_message(mensagem.chat.id, mensage_return)
+    
 
 def verificar(mensagem):
     return True
@@ -37,7 +40,7 @@ def respostapadrao(mensagem):
 Segue o MENU do BOT
 /mylocation
 /myip
-/relatoriopdf
+/clima
 Escolha uma opção:
     """
     bot.send_message(mensagem.chat.id, texto_menu)
