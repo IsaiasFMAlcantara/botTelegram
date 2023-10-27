@@ -1,6 +1,6 @@
+
 import json
 import requests
-from cred import func_api_key
 
 # FUNÇÃO DE API QUE BUSCA O SEU CEP
 def func_cep(cep):
@@ -24,21 +24,3 @@ def func_ip():
             return f'conexao nao estabelecidad {response2.status_code}'
     else:
         return f'conexao nao estabelecidad {response.status_code}'
-
-def kelvin_para_celsius(kelvin):
-    celsius = kelvin - 273.15
-    return round(celsius,2)
-
-def func_clima(cidade):
-    api_key = func_api_key()
-    response = requests.get(
-        f"https://api.openweathermap.org/data/2.5/weather?q={cidade},br&appid={api_key}"
-    )
-    data = response.json()
-    print(f"""
-    temperatura: {kelvin_para_celsius(data['main']['temp'])}
-    temp_minima: {kelvin_para_celsius(data['main']['temp_min'])}
-    temp_maxima: {kelvin_para_celsius(data['main']['temp_max'])}
-    pressao: {kelvin_para_celsius(data['main']['pressure'])}
-    humidade: {kelvin_para_celsius(data['main']['humidity'])}
-    """)

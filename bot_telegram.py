@@ -1,7 +1,6 @@
 import telebot
 from functions import func_cep
 from functions import func_ip
-from functions import func_clima
 from cred import mostra_token
 
 bot = telebot.TeleBot(mostra_token())
@@ -40,7 +39,6 @@ def respostapadrao(mensagem):
 Segue o MENU do BOT
 /mylocation
 /myip
-/clima
 Escolha uma opção:
     """
     bot.send_message(mensagem.chat.id, texto_menu)
