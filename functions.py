@@ -1,6 +1,9 @@
-
+import psycopg2
 import json
 import requests
+from cred import CredencialDW
+from datetime import datetime
+
 
 # FUNÇÃO DE API QUE BUSCA O SEU CEP
 def func_cep(cep):

@@ -1,10 +1,9 @@
 import telebot
+from cred import mostra_token
 from functions import func_cep
 from functions import func_ip
-from cred import mostra_token
 
 bot = telebot.TeleBot(mostra_token())
-
 
 @bot.message_handler(commands=['clima'])
 def resposta_cep(mensagem):
